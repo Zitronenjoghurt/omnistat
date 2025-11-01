@@ -6,7 +6,7 @@ use omnistat_core::types::longitude::Longitude;
 async fn main() {
     let open_meteo = OpenMeteoApi::new();
     let results = open_meteo
-        .hourly_forecasts(Latitude::new(50.0), Longitude::new(10.0), "Europe/Berlin")
+        .daily_forecasts(Latitude::new(50.0), Longitude::new(10.0))
         .await
         .unwrap();
     println!("{:#?}", results);

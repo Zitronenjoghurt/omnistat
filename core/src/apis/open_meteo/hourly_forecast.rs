@@ -1,4 +1,4 @@
-use crate::apis::open_meteo::utils::parse_iso8601;
+use crate::apis::open_meteo::utils::parse_iso8601_datetime;
 use crate::error::{OmnistatError, OmnistatResult};
 use crate::types::angle::Angle;
 use crate::types::area_power_density::AreaPowerDensity;
@@ -88,7 +88,7 @@ impl HourlyForecastModel {
         let mut forecasts = Vec::with_capacity(count);
 
         for i in 0..count {
-            let naive_dt = parse_iso8601(&self.hourly.time[i])?;
+            let naive_dt = parse_iso8601_datetime(&self.hourly.time[i])?;
             let time = timezone
                 .from_local_datetime(&naive_dt)
                 .single()
@@ -169,13 +169,10 @@ pub(crate) struct HourlyForecastHoursModel {
     pub wind_speed_80m: Vec<f32>,
     pub wind_speed_120m: Vec<f32>,
     pub wind_speed_180m: Vec<f32>,
-    pub wind_direction_10m: Vec<u8>,
-    pub wind_direction_80m: Vec<u8>,
-    pub wind_direction_120m: Vec<u8>,
-    pub wind_direction_180m: Vec<u8>,
+    pub wind_direction_10m: Vec<u16>,
+    pub wind_direction_80m: Vec<u16>,
+    pub wind_direction_120m: Vec<u16>,
+    pub wind_direction_180m: Vec<u16>,
     pub wind_gusts_10m: Vec<f32>,
-    pub temperature_80m: Vec<f32>,
-    pub temperature_120m: Vec<f32>,
-    pub temperature_180m: Vec<f32>,
     pub shortwave_radiation: Vec<f32>,
 }
