@@ -1,0 +1,71 @@
+/// Sources:
+/// - https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
+/// - https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum WMOCode {
+    Clear = 0,
+    MainlyClear = 1,
+    PartlyCloudy = 2,
+    Cloudy = 3,
+    Foggy = 45,
+    RimeFog = 48,
+    LightDrizzle = 51,
+    Drizzle = 53,
+    HeavyDrizzle = 55,
+    LightFreezingDrizzle = 56,
+    FreezingDrizzle = 57,
+    LightRain = 61,
+    Rain = 63,
+    HeavyRain = 65,
+    LightFreezingRain = 66,
+    FreezingRain = 67,
+    LightSnow = 71,
+    Snow = 73,
+    HeavySnow = 75,
+    SnowGrains = 77,
+    LightShowers = 80,
+    Showers = 81,
+    HeavyShowers = 82,
+    LightSnowShowers = 85,
+    SnowShowers = 86,
+    Thunderstorm = 95,
+    LightThunderstormHail = 96,
+    ThunderstormHail = 99,
+    Unknown = 100,
+}
+
+impl From<u8> for WMOCode {
+    fn from(value: u8) -> Self {
+        match value {
+            0 => Self::Clear,
+            1 => Self::MainlyClear,
+            2 => Self::PartlyCloudy,
+            3 => Self::Cloudy,
+            45 => Self::Foggy,
+            48 => Self::RimeFog,
+            51 => Self::LightDrizzle,
+            53 => Self::Drizzle,
+            55 => Self::HeavyDrizzle,
+            56 => Self::LightFreezingDrizzle,
+            57 => Self::FreezingDrizzle,
+            61 => Self::LightRain,
+            63 => Self::Rain,
+            65 => Self::HeavyRain,
+            66 => Self::LightFreezingRain,
+            67 => Self::FreezingRain,
+            71 => Self::LightSnow,
+            73 => Self::Snow,
+            75 => Self::HeavySnow,
+            77 => Self::SnowGrains,
+            80 => Self::LightShowers,
+            81 => Self::Showers,
+            82 => Self::HeavyShowers,
+            85 => Self::LightSnowShowers,
+            86 => Self::SnowShowers,
+            95 => Self::Thunderstorm,
+            96 => Self::LightThunderstormHail,
+            99 => Self::ThunderstormHail,
+            _ => Self::Unknown,
+        }
+    }
+}

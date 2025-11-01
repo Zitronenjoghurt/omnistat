@@ -1,0 +1,8 @@
+[package]
+name = "omnistat-server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+omnistat-core = { workspace = true }
+tokio = { workspace = true }
