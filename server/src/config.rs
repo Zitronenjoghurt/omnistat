@@ -25,4 +25,10 @@ impl Config {
         config.db_url = db_url;
         Ok(Arc::new(config))
     }
+
+    pub fn get_user_or_err(&self, user_id: &str) -> anyhow::Result<&user::ConfigUser> {
+        self.users
+            .get(user_id)
+            .context(format!("User '{user_id}' does not exist in config."))
+    }
 }

@@ -17,7 +17,7 @@ use std::str::FromStr;
 
 /// Source: https://open-meteo.com/en/docs
 #[derive(Debug)]
-pub struct HourlyForecast {
+pub struct OpenMeteoHourly {
     pub time: DateTime<Utc>,
     pub latitude: Latitude,
     pub longitude: Longitude,
@@ -78,7 +78,7 @@ pub(crate) struct HourlyForecastModel {
 }
 
 impl HourlyForecastModel {
-    pub fn parse_forecasts(&self) -> OmnistatResult<Vec<HourlyForecast>> {
+    pub fn parse_forecasts(&self) -> OmnistatResult<Vec<OpenMeteoHourly>> {
         let timezone = Tz::from_str(self.timezone.as_str())?;
         let latitude = Latitude::new(self.latitude);
         let longitude = Longitude::new(self.longitude);
@@ -96,7 +96,7 @@ impl HourlyForecastModel {
                 .to_utc();
             let wmo_code: WMOCode = self.hourly.weather_code[i].into();
 
-            let forecast = HourlyForecast {
+            let forecast = OpenMeteoHourly {
                 time,
                 latitude,
                 longitude,

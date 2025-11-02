@@ -18,7 +18,7 @@ use std::time::Duration;
 
 /// Source: https://open-meteo.com/en/docs
 #[derive(Debug)]
-pub struct DailyForecast {
+pub struct OpenMeteoDaily {
     pub time: NaiveDate,
     pub latitude: Latitude,
     pub longitude: Longitude,
@@ -64,7 +64,7 @@ pub(crate) struct DailyForecastModel {
 }
 
 impl DailyForecastModel {
-    pub fn parse_forecasts(&self) -> OmnistatResult<Vec<DailyForecast>> {
+    pub fn parse_forecasts(&self) -> OmnistatResult<Vec<OpenMeteoDaily>> {
         let timezone = Tz::from_str(self.timezone.as_str())?;
         let latitude = Latitude::new(self.latitude);
         let longitude = Longitude::new(self.longitude);
@@ -90,7 +90,7 @@ impl DailyForecastModel {
                 .ok_or(OmnistatError::AmbiguousTimezone(self.timezone.clone()))?
                 .to_utc();
 
-            let forecast = DailyForecast {
+            let forecast = OpenMeteoDaily {
                 time,
                 latitude,
                 longitude,

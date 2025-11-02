@@ -6,6 +6,7 @@ mod apis;
 mod config;
 mod database;
 mod jobs;
+mod services;
 mod state;
 
 #[tokio::main]
