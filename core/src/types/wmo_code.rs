@@ -69,3 +69,39 @@ impl From<u8> for WMOCode {
         }
     }
 }
+
+impl From<WMOCode> for u8 {
+    fn from(value: WMOCode) -> Self {
+        match value {
+            WMOCode::Clear => 0,
+            WMOCode::MainlyClear => 1,
+            WMOCode::PartlyCloudy => 2,
+            WMOCode::Cloudy => 3,
+            WMOCode::Foggy => 45,
+            WMOCode::RimeFog => 48,
+            WMOCode::LightDrizzle => 51,
+            WMOCode::Drizzle => 53,
+            WMOCode::HeavyDrizzle => 55,
+            WMOCode::LightFreezingDrizzle => 56,
+            WMOCode::FreezingDrizzle => 57,
+            WMOCode::LightRain => 61,
+            WMOCode::Rain => 63,
+            WMOCode::HeavyRain => 65,
+            WMOCode::LightFreezingRain => 66,
+            WMOCode::FreezingRain => 67,
+            WMOCode::LightSnow => 71,
+            WMOCode::Snow => 73,
+            WMOCode::HeavySnow => 75,
+            WMOCode::SnowGrains => 77,
+            WMOCode::LightShowers => 80,
+            WMOCode::Showers => 81,
+            WMOCode::HeavyShowers => 82,
+            WMOCode::LightSnowShowers => 85,
+            WMOCode::SnowShowers => 86,
+            WMOCode::Thunderstorm => 95,
+            WMOCode::LightThunderstormHail => 96,
+            WMOCode::ThunderstormHail => 99,
+            WMOCode::Unknown => 100,
+        }
+    }
+}

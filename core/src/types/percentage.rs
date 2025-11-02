@@ -13,4 +13,12 @@ impl Percentage {
     pub fn from_0_100(value: f32) -> Self {
         Self(value / 100.0)
     }
+
+    pub fn as_0_1(self) -> f32 {
+        self.0
+    }
+
+    pub fn as_0_100(self) -> f32 {
+        self.0 * 100.0
+    }
 }

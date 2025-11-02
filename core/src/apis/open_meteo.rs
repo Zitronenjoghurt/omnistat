@@ -6,8 +6,8 @@ use crate::types::latitude::Latitude;
 use crate::types::longitude::Longitude;
 use std::time::Duration;
 
-mod daily_forecast;
-mod hourly_forecast;
+pub mod daily_forecast;
+pub mod hourly_forecast;
 mod utils;
 
 pub struct OpenMeteoApi {
