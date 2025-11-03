@@ -1,6 +1,7 @@
 pub mod angle;
 pub mod area_energy_density;
 pub mod area_power_density;
+pub mod digital_information;
 pub mod latitude;
 pub mod length;
 pub mod longitude;

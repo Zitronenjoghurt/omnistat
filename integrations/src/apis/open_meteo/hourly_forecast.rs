@@ -1,17 +1,17 @@
 use crate::apis::open_meteo::utils::parse_iso8601_datetime;
-use crate::error::{OmnistatError, OmnistatResult};
-use crate::types::angle::Angle;
-use crate::types::area_power_density::AreaPowerDensity;
-use crate::types::latitude::Latitude;
-use crate::types::length::Length;
-use crate::types::longitude::Longitude;
-use crate::types::percentage::Percentage;
-use crate::types::pressure::Pressure;
-use crate::types::speed::Speed;
-use crate::types::temperature::Temperature;
-use crate::types::wmo_code::WMOCode;
+use crate::error::{IntegrationError, IntegrationResult};
 use chrono::{DateTime, TimeZone, Utc};
 use chrono_tz::Tz;
+use omnistat_core::types::angle::Angle;
+use omnistat_core::types::area_power_density::AreaPowerDensity;
+use omnistat_core::types::latitude::Latitude;
+use omnistat_core::types::length::Length;
+use omnistat_core::types::longitude::Longitude;
+use omnistat_core::types::percentage::Percentage;
+use omnistat_core::types::pressure::Pressure;
+use omnistat_core::types::speed::Speed;
+use omnistat_core::types::temperature::Temperature;
+use omnistat_core::types::wmo_code::WMOCode;
 use serde::Deserialize;
 use std::str::FromStr;
 
@@ -78,7 +78,7 @@ pub(crate) struct HourlyForecastModel {
 }
 
 impl HourlyForecastModel {
-    pub fn parse_forecasts(&self) -> OmnistatResult<Vec<OpenMeteoHourly>> {
+    pub fn parse_forecasts(&self) -> IntegrationResult<Vec<OpenMeteoHourly>> {
         let timezone = Tz::from_str(self.timezone.as_str())?;
         let latitude = Latitude::new(self.latitude);
         let longitude = Longitude::new(self.longitude);
@@ -92,7 +92,7 @@ impl HourlyForecastModel {
             let time = timezone
                 .from_local_datetime(&naive_dt)
                 .single()
-                .ok_or(OmnistatError::AmbiguousTimezone(self.timezone.clone()))?
+                .ok_or(IntegrationError::AmbiguousTimezone(self.timezone.clone()))?
                 .to_utc();
             let wmo_code: WMOCode = self.hourly.weather_code[i].into();
 

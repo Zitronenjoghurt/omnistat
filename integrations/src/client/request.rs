@@ -1,4 +1,4 @@
-use crate::error::OmnistatResult;
+use crate::error::IntegrationResult;
 use reqwest::header::{HeaderMap, HeaderValue, IntoHeaderName};
 use reqwest::Url;
 use reqwest_middleware::ClientWithMiddleware;
@@ -14,7 +14,7 @@ impl<'a> RequestBuilder<'a> {
     pub fn new(
         client: &'a ClientWithMiddleware,
         url: impl AsRef<str>,
-    ) -> OmnistatResult<RequestBuilder<'a>> {
+    ) -> IntegrationResult<RequestBuilder<'a>> {
         Ok(Self {
             client,
             url: Url::parse(url.as_ref())?,
@@ -26,7 +26,7 @@ impl<'a> RequestBuilder<'a> {
         mut self,
         key: impl IntoHeaderName,
         value: impl AsRef<str>,
-    ) -> OmnistatResult<Self> {
+    ) -> IntegrationResult<Self> {
         let header_value: HeaderValue = value.as_ref().parse()?;
         self.headers.insert(key, header_value);
         Ok(self)
@@ -44,7 +44,7 @@ impl<'a> RequestBuilder<'a> {
         self
     }
 
-    pub async fn get_json<T: DeserializeOwned>(self) -> OmnistatResult<T> {
+    pub async fn get_json<T: DeserializeOwned>(self) -> IntegrationResult<T> {
         Ok(self
             .client
             .get(self.url)

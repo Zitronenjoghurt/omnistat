@@ -1,0 +1,12 @@
+[package]
+name = "omnistat-net"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+omnistat-core = { workspace = true }
+bincode = { workspace = true }
+thiserror = "2.0.17"
+tokio = { workspace = true }
+tracing = { workspace = true }
+zstd = { workspace = true }

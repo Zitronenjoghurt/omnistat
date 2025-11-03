@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 migration = { path = "migration" }
 omnistat-core = { workspace = true }
+omnistat-integrations = { workspace = true }
 anyhow = "1.0.100"
 sea-orm = { version = "2.0.0-rc.16", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"] }
 serde = { workspace = true }

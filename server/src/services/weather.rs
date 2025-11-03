@@ -1,8 +1,8 @@
 use crate::config::Config;
 use crate::database::entity::hourly_weather;
 use crate::services::ServiceInitContext;
-use omnistat_core::apis::open_meteo::hourly_forecast::OpenMeteoHourly;
-use omnistat_core::apis::open_meteo::OpenMeteoApi;
+use omnistat_integrations::apis::open_meteo::hourly_forecast::OpenMeteoHourly;
+use omnistat_integrations::apis::open_meteo::OpenMeteoApi;
 use sea_orm::DatabaseConnection;
 use std::sync::Arc;
 use tracing::{error, info};

@@ -1,4 +1,4 @@
-use crate::error::OmnistatResult;
+use crate::error::IntegrationResult;
 use reqwest_leaky_bucket::leaky_bucket::RateLimiter;
 use reqwest_middleware::{ClientBuilder, ClientWithMiddleware};
 use reqwest_retry::policies::ExponentialBackoff;
@@ -31,7 +31,7 @@ impl ApiClient {
     pub fn request(
         &'_ self,
         base_url: impl AsRef<str>,
-    ) -> OmnistatResult<request::RequestBuilder<'_>> {
+    ) -> IntegrationResult<request::RequestBuilder<'_>> {
         request::RequestBuilder::new(&self.client, base_url)
     }
 }

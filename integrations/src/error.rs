@@ -1,7 +1,7 @@
-pub type OmnistatResult<T> = Result<T, OmnistatError>;
+pub type IntegrationResult<T> = Result<T, IntegrationError>;
 
 #[derive(Debug, thiserror::Error)]
-pub enum OmnistatError {
+pub enum IntegrationError {
     #[error("Ambiguous timezone: {0}")]
     AmbiguousTimezone(String),
     #[error("Invalid URL: {0}")]

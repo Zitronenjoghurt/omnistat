@@ -1,4 +1,4 @@
-use omnistat_core::apis::open_meteo::OpenMeteoApi;
+use omnistat_integrations::apis::open_meteo::OpenMeteoApi;
 use std::sync::Arc;
 
 pub struct Apis {

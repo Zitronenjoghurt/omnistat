@@ -1,9 +1,13 @@
 [workspace]
-members = ["core", "server"]
+members = ["core", "integrations", "net", "server"]
 resolver = "3"
 
 [workspace.dependencies]
 omnistat-core = { path = "core" }
+omnistat-integrations = { path = "integrations" }
+omnistat-net = { path = "net" }
+bincode = "2.0.1"
 serde = { version = "1.0.228", features = ["derive"] }
 tokio = { version = "1.48.0", features = ["full"] }
 tracing = "0.1.41"
+zstd = "0.13.3"

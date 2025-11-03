@@ -1,5 +1,5 @@
 use crate::database::entity::hourly_weather;
-use omnistat_core::apis::open_meteo::hourly_forecast::OpenMeteoHourly;
+use omnistat_integrations::apis::open_meteo::hourly_forecast::OpenMeteoHourly;
 use sea_orm::{DatabaseConnection, EntityTrait, Set};
 
 impl hourly_weather::Entity {

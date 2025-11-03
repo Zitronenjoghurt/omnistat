@@ -4,12 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-chrono = { version = "0.4.42", features = ["serde"] }
-chrono-tz = "0.10.4"
-reqwest = { version = "0.12.24", features = ["json"] }
-reqwest-middleware = "0.4.2"
-reqwest-retry = "0.7.0"
-reqwest-leaky-bucket = "0.4.0"
 serde = { workspace = true }
-thiserror = "2.0.17"
-url = "2.5.7"
